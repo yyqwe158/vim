@@ -1,0 +1,82 @@
+"leader键设置
+let mapleader=" "
+"显示行号
+set nu 
+"自动补全
+set wildmenu
+"缩进
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+"高亮
+syntax on
+"显示输入命令
+set showcmd
+"下划线光标行
+set cursorline
+"高亮搜索
+set hlsearch
+exec "nohlsearch"
+set incsearch
+"搜索不区分大小写/智能大小写
+set ignorecase
+set smartcase
+
+
+"转到上/下个搜索结果并居中
+noremap = nzz
+noremap - Nzz
+"取消搜索高亮
+noremap q :nohlsearch<CR>
+
+"快速移动行
+noremap , 5k
+noremap . 5j
+
+map W :w<CR>
+map Q :q<CR>
+
+"分屏
+map s <nop>
+map s<Left> :set nosplitright<CR>:vsplit<CR>
+map s<Right> :set splitright<CR>:vsplit<CR>
+map s<Up> :set nosplitbelow<CR>:split<CR>
+map s<Down> :set splitbelow<CR>:split<CR>
+map <LEADER><Left> <C-w>h
+map <LEADER><Right> <C-w>l
+map <LEADER><Up> <C-w>k
+map <LEADER><Down> <C-w>j
+
+"兼容性
+set nocompatible
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+set encoding=utf-8
+"显示行尾空格
+set list
+set listchars=tab:▸\ ,trail:▫
+"不同模式光标设置
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"执行命令处于当前目录
+set autochdir
+"能看到光标所在行附近的内容
+set scrolloff=5
+
+"NERDTreeToggle
+map <LEADER><LEADER> :NERDTreeToggle<CR>
+"root保存
+map ss :w !sudo tee %<CR>
+
+
+
+
+"插件
+call plug#begin()
+
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+call plug#end()
